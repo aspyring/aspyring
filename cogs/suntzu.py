@@ -10,7 +10,7 @@ class suntzu(commands.Cog):
         self.suntzu = suntzu 
 
 
- with open('quotes.json', 'r') as f:
+with open('quotes.json', 'r') as f:
 	quotes = json.loads(f.read())
 
  routes = web.RouteTableDef()
@@ -42,7 +42,7 @@ class suntzu(commands.Cog):
 		output += word.lstrip(' ')
   	return output.strip()
   
- async def create_quote_image(quote=None):
+async def create_quote_image(quote=None):
  	im = Image.open('suntzu.jpg')
  
  	if quote is None:
@@ -61,18 +61,18 @@ class suntzu(commands.Cog):
  		contents = output.getvalue()
  	return contents
 
- @routes.get('/quote.png')
- async def generate_quote_png(request):
+@routes.get('/quote.png')
+async def generate_quote_png(request):
 	contents = await create_quote_image(request.query.get('quote'))
 	return web.Response(body=contents, content_type='image/png')
 
- @routes.get('/random')
- async def random_quote(request):
+@routes.get('/random')
+async def random_quote(request):
 	quote = random.choice(quotes)['text']
 	return web.HTTPFound('/quote.png?quote=' + quote)
 
- app = web.Application()
- app.add_routes(routes)
+app = web.Application()
+app.add_routes(routes)
 
 def setup(bot):
 	bot.add_cog(suntzu(bot))
