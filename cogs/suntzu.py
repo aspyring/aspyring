@@ -13,11 +13,11 @@ class suntzu(commands.Cog):
 with open('quotes.json', 'r') as f:
 	quotes = json.loads(f.read())
 
- routes = web.RouteTableDef()
+routes = web.RouteTableDef()
 
- font = ImageFont.truetype('Georgia.ttf', 48)
+font = ImageFont.truetype('Georgia.ttf', 48)
 
- def wrap_text(text, line_length):
+def wrap_text(text, line_length):
 	output = ''
 	current_line_length = 0
 	
