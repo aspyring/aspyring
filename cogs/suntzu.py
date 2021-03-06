@@ -27,7 +27,7 @@ def wrap_text(text, line_length):
 		new_line_length = current_line_length + word_length
  if '\n' in word:
         current_line_length = 0
-	print(word_length)
+ print(word_length)
  while word_length > line_length:
     output += word[:30] + '\n'
     word = word[30:]
