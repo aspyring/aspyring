@@ -5,3 +5,4 @@ datetime
 sly
 pyfiglet
 Pillow
+mojang
