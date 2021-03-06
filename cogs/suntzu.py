@@ -20,7 +20,7 @@ with open('quotes.json', 'r') as f:
 
 routes = web.RouteTableDef()
 
-font = ImageFont.truetype('suntzu.ttf', 48)
+font = ImageFont.truetype('georgia.ttf', 48)
 
 def wrap_text(text, line_length):
  output = ''
