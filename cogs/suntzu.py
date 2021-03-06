@@ -18,29 +18,29 @@ routes = web.RouteTableDef()
 font = ImageFont.truetype('Georgia.ttf', 48)
 
 def wrap_text(text, line_length):
-	output = ''
-	current_line_length = 0
+ output = ''
+ current_line_length = 0
 	
-	for word in text.split(' '):
+ for word in text.split(' '):
 		word = word + ' '
 		word_length = font.getsize(word)[0]
 		new_line_length = current_line_length + word_length
-		if '\n' in word:
+	if '\n' in word:
 			current_line_length = 0
 		print(word_length)
-		while word_length > line_length:
+	while word_length > line_length:
 			output += word[:30] + '\n'
 			word = word[30:]
 			word_length = font.getsize(word)[0]
 			print('word is too long!')
-		if new_line_length > line_length:
+	if new_line_length > line_length:
 			output = output.strip()
 			output += '\n'
 			current_line_length = 0
 			print('wrapped because length overflowed')
 		current_line_length += font.getsize(word)[0]
 		output += word.lstrip(' ')
-  	return output.strip()
+ return output.strip()
   
 async def create_quote_image(quote=None):
  	im = Image.open('suntzu.jpg')
