@@ -1,8 +1,0 @@
-.env
-.gitignore
-.local/
-.replit
-poetry.lock
-pyproject.toml
-__pycache__/
-*.py[cod]
