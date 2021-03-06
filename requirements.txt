@@ -7,3 +7,6 @@ sly
 pyfiglet
 Pillow
 mojang
+utils.utils
+random
+utils.embeds
