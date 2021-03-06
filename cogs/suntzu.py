@@ -25,21 +25,21 @@ def wrap_text(text, line_length):
 		word = word + ' '
 		word_length = font.getsize(word)[0]
 		new_line_length = current_line_length + word_length
-	 if '\n' in word:
-			current_line_length = 0
-		print(word_length)
-	 while word_length > line_length:
-			output += word[:30] + '\n'
-			word = word[30:]
-			word_length = font.getsize(word)[0]
-			print('word is too long!')
-	 if new_line_length > line_length:
-			output = output.strip()
-			output += '\n'
-			current_line_length = 0
-			print('wrapped because length overflowed')
-		current_line_length += font.getsize(word)[0]
-		output += word.lstrip(' ')
+ if '\n' in word:
+        current_line_length = 0
+	print(word_length)
+ while word_length > line_length:
+    output += word[:30] + '\n'
+    word = word[30:]
+    word_length = font.getsize(word)[0]
+ print('word is too long!')
+ if new_line_length > line_length:
+		output = output.strip()
+		output += '\n'
+		current_line_length = 0
+ print('wrapped because length overflowed')
+ current_line_length += font.getsize(word)[0]
+ output += word.lstrip(' ')
  return output.strip()
   
 async def create_quote_image(quote=None):
