@@ -28,6 +28,7 @@ client.load_extension('cogs.user')
 client.load_extension('cogs.Bot')
 client.load_extension('cogs.modmail')
 client.load_extension('cogs.error_handling')
+client.load_extension('cogs.suntzu')
 
 #===================================== EVENTS =======================================#
 
