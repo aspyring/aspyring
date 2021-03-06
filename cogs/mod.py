@@ -294,9 +294,9 @@ class mod(commands.Cog):
         await ctx.send(embed=embed)
     @commands.command(name='tempmute')
     async def tempmute(ctx, member: discord.Member, time: int, d, *, reason=None):
-    guild = ctx.guild
+     guild = ctx.guild
 
-    for role in guild.roles:
+     for role in guild.roles:
         if role.name == "Muted":
             await member.add_roles(role)
 
