@@ -1,12 +1,6 @@
-utils
 discord.py
 requests
 asyncio
 datetime
 sly
 pyfiglet
-Pillow
-mojang
-utils.utils
-random
-utils.embeds
