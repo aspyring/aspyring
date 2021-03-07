@@ -4,4 +4,4 @@ asyncio
 datetime
 sly
 pyfiglet
-Opus
+ffmpeg
