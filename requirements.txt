@@ -5,3 +5,4 @@ datetime
 sly
 pyfiglet
 ffmpeg
+discord.voice_client
