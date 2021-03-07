@@ -261,7 +261,7 @@ class help(commands.Cog):
             embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
             await ctx.send(embed=embed)
     @music.error
-    asyncdef music_erro(self, ctx, error):
+    async def music_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
             await ctx.trigger_typing()
             embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
