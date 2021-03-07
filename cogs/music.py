@@ -14,7 +14,7 @@ if not discord.opus.is_loaded():
     # you should replace this with the location the
     # opus library is located in and with the proper filename.
     # note that on windows this DLL is automatically provided for you
-    discord.opus.load_opus(r'C:\Users\user1\Documents\GitHub\aspyring\opus.dll')
+    discord.opus.load_opus(r'C:\Users\user1\Documents\GitHub\aspyring\cogs\opus.dll')
 
 
 def __init__(self, bot):
