@@ -212,12 +212,12 @@ class help(commands.Cog):
             embed.set_author(name='Help')
             
             #fields 
-            embed.add_field(name='play'. value='play music', inline=False)
-            embed.add_field(name='summon'. value='summons the bot to your vc', inline=False)
-            embed.add_field(name='Stop'. value='stops the music', inline=False)
-            embed.add_field(name='join'. value='makes the bot join your vc', inline=False)
-            embed.add_field(name='Skip'. value='skips the current song', inline=False)
-            embed.add_field(name='np'. value='shows the current song info', inline=False)
+            embed.add_field(name='play', value='play music', inline=False)
+            embed.add_field(name='summon', value='summons the bot to your vc', inline=False)
+            embed.add_field(name='Stop', value='stops the music', inline=False)
+            embed.add_field(name='join', value='makes the bot join your vc', inline=False)
+            embed.add_field(name='Skip', value='skips the current song', inline=False)
+            embed.add_field(name='np', value='shows the current song info', inline=False)
             # details
             embed.set_footer(text=f'page {page}/{total_pages}')
             emoji = self.right
