@@ -39,6 +39,7 @@ class help(commands.Cog):
             embed.add_field(name='User', value='commands available for all members', inline=False)
             embed.add_field(name='Bot', value='Bot related commands', inline=False)
             embed.add_field(name='ModMail', value='Manage modmails (staff only)', inline=False)
+            embed.add_field(name='Music', value='Music commands', inline=False)
             embed.set_footer(text="use  []help <module> ")
             mhelp = await ctx.send(embed=embed)
             emoji = self.right
@@ -200,7 +201,39 @@ class help(commands.Cog):
         await asyncio.sleep(2)
         mhelp = await ctx.send(embed=embed)
         await mhelp.add_reaction(emoji)
+        
     
+    @help.command(name='Music', aliases=['music'])
+    async def music(self, ctx, page: int=1):
+        await ctx.trigger_typing()
+        total_pages = 1
+        if page == 1 or page is None:
+            embed = self.hembed(True)
+            embed.set_author(name='Help')
+            
+            #fields 
+            embed.add_field(name='Play'. value='Play music', inline=False)
+            embed.add_field(name='summon'. value='Summon the bot to your VC', inline=False)
+            embed.add_field(name='Stop'. value='Stop the music', inline=False)
+            embed.add_field(name='Join'. value='Makes the bot join your VC', inline=False)
+            embed.add_field(name='Skip'. value='Skip the current song', inline=False)
+            embed.add_field(name='NP'. value='Shows the current song info', inline=False)
+            # details
+            embed.set_footer(text=f'page {page}/{total_pages}')
+            emoji = self.right
+        else:
+            embed = self.hembed(False)
+            embed.set_author(name='Help')
+
+            # fields
+            embed.add_field(name='Page not found', value="For this module that page doesn't exist", inline=False)
+
+            # details
+            embed.set_footer(text=f'Total pages - {total_pages}')
+            emoji = self.wrong
+        await asyncio.sleep(2)
+        mhelp = await ctx.send(embed=embed)
+        await mhelp.add_reaction(emoji)
 #================================ ERROR MANAGEMENT ===================================#
 
     @modmail.error
@@ -223,6 +256,12 @@ class help(commands.Cog):
             await ctx.send(embed=embed)
     @mod.error
     async def mod_error(self, ctx, error):
+        if isinstance(error, commands.BadArgument):
+            await ctx.trigger_typing()
+            embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
+            await ctx.send(embed=embed)
+    @music.error
+    asyncdef music_erro(self, ctx, error):
         if isinstance(error, commands.BadArgument):
             await ctx.trigger_typing()
             embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
