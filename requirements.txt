@@ -5,3 +5,7 @@ datetime
 sly
 pyfiglet
 ffmpeg
+aiohttp
+asyncpg
+Pillow
+discord
