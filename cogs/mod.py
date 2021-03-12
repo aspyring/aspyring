@@ -103,7 +103,7 @@ class mod(commands.Cog):
         if found_reason:
             await self.log(
                 ctx,
-                f'<@{author.id} kicked <@{user.id}>',
+                f'<@{author.id}> kicked <@{user.id}>',
                 fields=[
                     ('**Reason:**', reason)
                 ]
