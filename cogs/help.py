@@ -201,39 +201,6 @@ class help(commands.Cog):
         await asyncio.sleep(2)
         mhelp = await ctx.send(embed=embed)
         await mhelp.add_reaction(emoji)
-        
-    
-    @help.command(name='Music', aliases=['music'])
-    async def music(self, ctx, page: int=1):
-        await ctx.trigger_typing()
-        total_pages = 1
-        if page == 1 or page is None:
-            embed = self.hembed(True)
-            embed.set_author(name='Help')
-            
-            #fields 
-            embed.add_field(name='play', value='play music', inline=False)
-            embed.add_field(name='summon', value='summons the bot to your vc', inline=False)
-            embed.add_field(name='Stop', value='stops the music', inline=False)
-            embed.add_field(name='join', value='makes the bot join your vc', inline=False)
-            embed.add_field(name='Skip', value='skips the current song', inline=False)
-            embed.add_field(name='np', value='shows the current song info', inline=False)
-            # details
-            embed.set_footer(text=f'page {page}/{total_pages}')
-            emoji = self.right
-        else:
-            embed = self.hembed(False)
-            embed.set_author(name='Help')
-
-            # fields
-            embed.add_field(name='Page not found', value="For this module that page doesn't exist", inline=False)
-
-            # details
-            embed.set_footer(text=f'Total pages - {total_pages}')
-            emoji = self.wrong
-        await asyncio.sleep(2)
-        mhelp = await ctx.send(embed=embed)
-        await mhelp.add_reaction(emoji)
 #================================ ERROR MANAGEMENT ===================================#
 
     @modmail.error
@@ -260,12 +227,7 @@ class help(commands.Cog):
             await ctx.trigger_typing()
             embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
             await ctx.send(embed=embed)
-    @music.error
-    async def music_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.trigger_typing()
-            embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help mod [page]", color=discord.Color.red())
-            await ctx.send(embed=embed)
+    
 
 #===================================== ADD COG ======================================#
 
