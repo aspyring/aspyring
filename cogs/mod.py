@@ -7,7 +7,7 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, BadArgument
 import requests, json 
 from datetime import timedelta, datetime
-
+import typing
 
 class mod(commands.Cog):
     ## MAIN
@@ -326,36 +326,12 @@ class mod(commands.Cog):
 
     @commands.command(name='mban')
     @has_permissions(ban_members=True)
-    async def mban(self, ctx, user: commands.Greedy[discord.Member], *argv):
-        '''Ban a user.
-        Example Usage:
-        <prefix>ban <user> [reason]]// Bans <user> from the guild for the reason [reason]'''
-        fields = []
-        guild = ctx.guild
-        argv = list(argv)
-
-        author = ctx.author
-        if len(argv) > 0:
-            reason = ' '.join(argv)
-            fields.append(
-                ('**Reason:**', reason, True)
-            )
-
-        await self.log(
-            ctx,
-            f'<@{author.id}> banned <@{user.id}>',
-            fields=fields,
-            showauth=True
-        )
-        embed = discord.Embed(
-            title='**Ban**',
-            description=f'<@{user.id}> has been banned.',
-            color=0xff0000
-        )
-        await user.ban()
-        await ctx.send(embed=embed)
-        print("Event. ", user, " banned! by ", author)
-
+    async def mban(ctx, members: commands.Greedy[discord.Member],
+                   delete_days: typing.Optional[int] = 0, *,
+                   reason: str):
+    """Mass bans members with an optional delete_days parameter"""
+    for member in members:
+        await member.ban(delete_message_days=delete_days, reason=reason)
 #===================================== ADD COG ======================================#
 
 def setup(bot):
