@@ -46,7 +46,7 @@ class help(commands.Cog):
 #========================================== HELP MODULES =================================================#
 
 
-    @help.command(name='Mod', aliases=['Mod', 'MOD'])
+    @help.command(name='mod', aliases=['Mod', 'MOD'])
     async def mod(self, ctx, page: int=1):
         await ctx.trigger_typing()
         total_pages = 1
