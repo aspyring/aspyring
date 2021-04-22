@@ -330,7 +330,7 @@ class mod(commands.Cog):
                    delete_days: typing.Optional[int] = 0, *,
                    reason: str):
     """Mass bans members with an optional delete_days parameter"""
-      for member in members:
+     for member in members:
         await member.ban(delete_message_days=delete_days, reason=reason)
 #===================================== ADD COG ======================================#
 
