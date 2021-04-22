@@ -324,6 +324,38 @@ class mod(commands.Cog):
 
             return
 
+ @commands.command(name='mban')
+    @has_permissions(ban_members=True)
+    async def mban(self, ctx, user: commands.Greedy[discord.Member], *argv):
+        '''Ban a user.
+        Example Usage:
+        <prefix>ban <user> [reason]]// Bans <user> from the guild for the reason [reason]'''
+        fields = []
+        guild = ctx.guild
+        argv = list(argv)
+
+        author = ctx.author
+        if len(argv) > 0:
+            reason = ' '.join(argv)
+            fields.append(
+                ('**Reason:**', reason, True)
+            )
+
+        await self.log(
+            ctx,
+            f'<@{author.id}> banned <@{user.id}>',
+            fields=fields,
+            showauth=True
+        )
+        embed = discord.Embed(
+            title='**Ban**',
+            description=f'<@{user.id}> has been banned.',
+            color=0xff0000
+        )
+        await user.ban()
+        await ctx.send(embed=embed)
+        print("Event. ", user, " banned! by ", author)
+
 #===================================== ADD COG ======================================#
 
 def setup(bot):
