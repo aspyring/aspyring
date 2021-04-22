@@ -38,8 +38,6 @@ class help(commands.Cog):
             embed.add_field(name='Mod', value='Moderation commands (staff only)', inline=False)
             embed.add_field(name='User', value='commands available for all members', inline=False)
             embed.add_field(name='Bot', value='Bot related commands', inline=False)
-            embed.add_field(name='ModMail', value='Manage modmails (staff only)', inline=False)
-            embed.add_field(name='Music', value='Music commands', inline=False)
             embed.set_footer(text="use  []help <module> ")
             mhelp = await ctx.send(embed=embed)
             emoji = self.right
@@ -48,7 +46,7 @@ class help(commands.Cog):
 #========================================== HELP MODULES =================================================#
 
 
-    @help.command(name='mod', aliases=['Mod', 'MOD'])
+    @help.command(name='Mod', aliases=['Mod', 'MOD'])
     async def mod(self, ctx, page: int=1):
         await ctx.trigger_typing()
         total_pages = 1
@@ -91,10 +89,8 @@ class help(commands.Cog):
             # fields
             embed.add_field(name='say', value='Repeats you', inline=False)
             embed.add_field(name='hi', value='say hi ( ~~for some reason~~ )', inline=False)
-            embed.add_field(name='info', value='Get to ~~spy~~ know about a user.', inline=False)
-            embed.add_field(name='weather', value='description', inline=False)
-            embed.add_field(name='brainfuck', value='The BrainFuck Interpreter!', inline=False)
-            embed.add_field(name='jb', value='The JB Interpreter! ', inline=False)
+            embed.add_field(name='info', value='Get to ~~spy on a user~~ know about a user.', inline=False)
+           
             
             # details
             embed.set_footer(text=f'page {page}/{total_pages}')
@@ -106,9 +102,6 @@ class help(commands.Cog):
             # fields
             embed.add_field(name='goodmorning', value='Wish Good Morning', inline=False)
             embed.add_field(name='goodnight', value='Wish Good night', inline=False)
-            embed.add_field(name='google', value='description', inline=False)
-            embed.add_field(name='bing', value='description', inline=False)
-            embed.add_field(name='dontasktoask', value="don't ask to ask, Just ask!", inline=False)
             embed.add_field(name='ascii', value='Ascii art', inline=False)
             
             # details
@@ -121,10 +114,9 @@ class help(commands.Cog):
             # fields
             embed.add_field(name='say', value='Repeats you', inline=False)
             embed.add_field(name='hi', value='say hi ( ~~for some reason~~ )', inline=False)
-            embed.add_field(name='info', value='Get to ~~spy~~ know about a user.', inline=False)
-            embed.add_field(name='weather', value='description', inline=False)
-            embed.add_field(name='brainfuck', value='The BrainFuck Interpreter!', inline=False)
-            embed.add_field(name='jb', value='The JB Interpreter! ', inline=False)
+            embed.add_field(name='info', value='Get to ~~spy on a user~~ know about a user.', inline=False)
+            
+            
             
             # details
             embed.set_footer(text=f'page {page}/{total_pages}')
@@ -173,42 +165,9 @@ class help(commands.Cog):
         mhelp = await ctx.send(embed=embed)
         await mhelp.add_reaction(emoji)
     
-    @help.command(name='modmail', aliases=['ModMail', 'Modmail', 'modMail', 'MODMAIL'])
-    async def modmail(self, ctx, page: int=1):
-        await ctx.trigger_typing()
-        total_pages = 1
-        if page == 1 or page is None:
-            embed = self.hembed(True)
-            embed.set_author(name='Help')
-
-            # fields
-            embed.add_field(name='reply', value='reply to modmails', inline=False)
-            embed.add_field(name='setup', value='setup modmails channel', inline=False)
-
-            # details
-            embed.set_footer(text=f'page {page}/{total_pages}')
-            emoji = self.right
-        else:
-            embed = self.hembed(False)
-            embed.set_author(name='Help')
-
-            # fields
-            embed.add_field(name='Page not found', value="For this module that page doesn't exist", inline=False)
-
-            # details
-            embed.set_footer(text=f'Total pages - {total_pages}')
-            emoji = self.wrong
-        await asyncio.sleep(2)
-        mhelp = await ctx.send(embed=embed)
-        await mhelp.add_reaction(emoji)
+    
 #================================ ERROR MANAGEMENT ===================================#
 
-    @modmail.error
-    async def modmail_error(self, ctx, error):
-        if isinstance(error, commands.BadArgument):
-            await ctx.trigger_typing()
-            embed = discord.Embed(title="Syntax Error", description="check the arguments given. \n> <prefix>help modmail [page]", color=discord.Color.red())
-            await ctx.send(embed=embed)
     @bot.error
     async def bot_error(self, ctx, error):
         if isinstance(error, commands.BadArgument):
