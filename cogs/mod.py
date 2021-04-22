@@ -324,7 +324,7 @@ class mod(commands.Cog):
 
             return
 
- @commands.command(name='mban')
+    @commands.command(name='mban')
     @has_permissions(ban_members=True)
     async def mban(self, ctx, user: commands.Greedy[discord.Member], *argv):
         '''Ban a user.
