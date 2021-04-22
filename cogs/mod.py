@@ -326,7 +326,7 @@ class mod(commands.Cog):
 
     @commands.command(name='mban')
     @has_permissions(ban_members=True)
-     async def mban(ctx, members: commands.Greedy[discord.Member],
+    async def mban(ctx, members: commands.Greedy[discord.Member],
                    delete_days: typing.Optional[int] = 0, *,
                    reason: str):
     """Mass bans members with an optional delete_days parameter"""
